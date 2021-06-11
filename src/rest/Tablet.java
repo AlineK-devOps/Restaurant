@@ -1,5 +1,6 @@
 package rest;
 
+import ad.AdvertisementManager;
 import kitchen.Order;
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ public class Tablet extends Observable { //планшет
             order = new Order(this);
             ConsoleHelper.writeMessage(order.toString()); //вывод заказа
             if (!order.isEmpty()){
+                new AdvertisementManager(order.getTotalCookingTime() * 60).processVideos();
                 setChanged(); // добавлен новый заказ
                 notifyObservers(order); //отправляем изменения наблюдателям
             }

@@ -6,6 +6,7 @@ public class Advertisement { //рекламное объявление
     private long initialAmount; //стоимость рекламы в копейках
     private int hits; //количество оплаченных показов
     private int duration; //продолжительность в секундах
+    private long amountPerOneDisplaying; //стоимость одного показа в копейках
 
     public Advertisement(Object content, String name, long initialAmount, int hits, int duration) {
         this.content = content;
@@ -13,5 +14,20 @@ public class Advertisement { //рекламное объявление
         this.initialAmount = initialAmount;
         this.hits = hits;
         this.duration = duration;
+
+        if (hits != 0)
+            amountPerOneDisplaying = initialAmount / hits;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public long getAmountPerOneDisplaying() {
+        return amountPerOneDisplaying;
     }
 }
