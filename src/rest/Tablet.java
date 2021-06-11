@@ -20,8 +20,10 @@ public class Tablet extends Observable { //планшет
         try {
             order = new Order(this);
             ConsoleHelper.writeMessage(order.toString()); //вывод заказа
-            setChanged(); // добавлен новый заказ
-            notifyObservers(order); //отправляем изменения наблюдателям
+            if (!order.isEmpty()){
+                setChanged(); // добавлен новый заказ
+                notifyObservers(order); //отправляем изменения наблюдателям
+            }
         } catch (IOException exception) {
             logger.log(Level.SEVERE, "Console is unavailable."); //исключение ввода-вывода
         }

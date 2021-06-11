@@ -15,6 +15,19 @@ public class Order { //заказ
         dishes = ConsoleHelper.getAllDishesForOrder(); //инициализация списка выбранных блюд
     }
 
+    public int getTotalCookingTime(){ //вычисление времени приготовления заказа
+        int time = 0;
+
+        for (Dish dish : dishes)
+            time += dish.getDuration();
+
+        return time;
+    }
+
+    public boolean isEmpty(){ //есть ли в заказе блюда
+        return dishes.isEmpty();
+    }
+
     @Override
     public String toString() { //отображение заказа
         if (dishes.isEmpty()) return "";
@@ -23,6 +36,6 @@ public class Order { //заказ
         for (Dish dish : dishes)
             order.append(dish).append(",").append(" ");
 
-        return String.format("Your order: [%s] of %s", order.substring(0, order.length() - 2), tablet);
+        return String.format("Your order: [%s] of %s, cooking time %dmin", order.substring(0, order.length() - 2), tablet, getTotalCookingTime());
     }
 }
