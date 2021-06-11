@@ -1,7 +1,5 @@
 package ad;
 
-import rest.ConsoleHelper;
-
 public class AdvertisementManager { //менеджер для оптимального подбора роликов для каждого заказа
     private final AdvertisementStorage storage = AdvertisementStorage.getInstance(); //хранилище рекламных роликов
     private int timeSeconds; //время приготовления заказа в секундах
@@ -11,6 +9,12 @@ public class AdvertisementManager { //менеджер для оптимальн
     }
 
     public void processVideos(){ //обработка рекламного видео
-        ConsoleHelper.writeMessage("calling processVideos method");
+        /*подобрать список видео, просмотр который обеспечивает максимальную выгоду */
+
+        if (storage.list().isEmpty()){ //если нет рекламных видео
+            throw new NoVideoAvailableException();
+        }
+
+        /*отобразить все рекламные ролики, отобранные для показа*/
     }
 }

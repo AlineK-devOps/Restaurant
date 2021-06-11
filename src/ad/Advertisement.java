@@ -30,4 +30,10 @@ public class Advertisement { //рекламное объявление
     public long getAmountPerOneDisplaying() {
         return amountPerOneDisplaying;
     }
+
+    public void revalidate(){ //уменьшаем количество показов
+        if (hits <= 0)
+            throw new UnsupportedOperationException();
+        hits--;
+    }
 }
