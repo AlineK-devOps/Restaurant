@@ -5,7 +5,7 @@ import rest.ConsoleHelper;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Cook implements Observer { //повар
+public class Cook extends Observable implements Observer{ //повар
     private String name;
 
     public Cook(String name) {
@@ -15,6 +15,8 @@ public class Cook implements Observer { //повар
     @Override
     public void update(Observable observable, Object arg) { //заказ поступил
         ConsoleHelper.writeMessage("Start cooking - " + arg);
+        setChanged();
+        notifyObservers(arg); //сообщаем официантам, что заказ готов
     }
 
     @Override
