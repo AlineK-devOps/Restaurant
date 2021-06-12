@@ -14,4 +14,14 @@ public class NoAvailableVideoEventDataRow implements EventDataRow {//нет ни
     public EventType getType() { //вернуть тип события
         return EventType.NO_AVAILABLE_VIDEO;
     }
+
+    @Override
+    public Date getDate() {
+        return null;
+    }
+
+    @Override
+    public int getTime() {
+        return 0;
+    }
 }

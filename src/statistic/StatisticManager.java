@@ -1,12 +1,10 @@
 package statistic;
 
+import kitchen.Cook;
 import statistic.event.EventDataRow;
 import statistic.event.EventType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StatisticManager { //регистрация событий в хранилище
 
@@ -26,6 +24,7 @@ public class StatisticManager { //регистрация событий в хр�
 
     private StatisticManager.StatisticStorage statisticStorage = new StatisticStorage();
     private static StatisticManager manager; //Singleton
+    private Set<Cook> cooks = new HashSet<>(); //список поваров
 
     private StatisticManager() {
     }
@@ -38,5 +37,9 @@ public class StatisticManager { //регистрация событий в хр�
 
     public void register(EventDataRow data){ //регистрирует событие в хранилище
         statisticStorage.put(data);
+    } //регистрация записи в хранилище
+
+    public void register(Cook cook){ //регистрация повара
+        cooks.add(cook);
     }
 }
