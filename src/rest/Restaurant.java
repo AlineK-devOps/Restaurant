@@ -1,7 +1,13 @@
 package rest;
 
+import ad.Advertisement;
 import kitchen.Cook;
 import kitchen.Waiter;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Restaurant { //ресторан
     public static void main(String[] args){
@@ -13,8 +19,6 @@ public class Restaurant { //ресторан
         cook.addObserver(waiter);
 
         tablet5.createOrder();
-        tablet5.createOrder();
-        tablet5.createOrder();
-        tablet5.createOrder();
     }
+
 }

@@ -27,6 +27,10 @@ public class Advertisement { //рекламное объявление
         return duration;
     }
 
+    public int getHits(){
+        return hits;
+    }
+
     public long getAmountPerOneDisplaying() {
         return amountPerOneDisplaying;
     }
