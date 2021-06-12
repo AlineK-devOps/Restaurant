@@ -27,10 +27,6 @@ public class Advertisement { //рекламное объявление
         return duration;
     }
 
-    public int getHits(){
-        return hits;
-    }
-
     public long getAmountPerOneDisplaying() {
         return amountPerOneDisplaying;
     }
@@ -39,5 +35,9 @@ public class Advertisement { //рекламное объявление
         if (hits <= 0)
             throw new UnsupportedOperationException();
         hits--;
+    }
+
+    public boolean isActive(){ //не закончились ли рекламные показы
+        return hits > 0;
     }
 }
