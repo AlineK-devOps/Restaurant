@@ -18,6 +18,10 @@ public class StatisticManager { //регистрация событий в хр�
                 storage.put(event, new ArrayList<>());
             }
         }
+
+        private void put(EventDataRow data){ //поместить в хранилище
+            storage.get(data.getType()).add(data);
+        }
     }
 
     private StatisticManager.StatisticStorage statisticStorage = new StatisticStorage();
@@ -33,6 +37,6 @@ public class StatisticManager { //регистрация событий в хр�
     }
 
     public void register(EventDataRow data){ //регистрирует событие в хранилище
-
+        statisticStorage.put(data);
     }
 }

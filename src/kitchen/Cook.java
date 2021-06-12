@@ -1,6 +1,8 @@
 package kitchen;
 
 import rest.ConsoleHelper;
+import statistic.StatisticManager;
+import statistic.event.CookedOrderEventDataRow;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -15,6 +17,7 @@ public class Cook extends Observable implements Observer{ //повар
     @Override
     public void update(Observable observable, Object arg) { //заказ поступил
         ConsoleHelper.writeMessage("Start cooking - " + arg);
+        StatisticManager.getInstance().register(new CookedOrderEventDataRow(observable.toString(), name, ((Order)arg).getTotalCookingTime(), ((Order)arg).getDishes())); //регистрируем событие
         setChanged();
         notifyObservers(arg); //сообщаем официантам, что заказ готов
     }

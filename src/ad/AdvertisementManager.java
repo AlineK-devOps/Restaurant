@@ -1,5 +1,8 @@
 package ad;
 
+import statistic.StatisticManager;
+import statistic.event.VideoSelectedEventDataRow;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,10 +70,26 @@ public class AdvertisementManager {
             return (int) (l != 0 ? l : o2.getDuration() - o1.getDuration());
         });
 
+        StatisticManager.getInstance().register(new VideoSelectedEventDataRow(optimalVideoSet, getAmount(optimalVideoSet), getDuration(optimalVideoSet))); //регистрируем событие
+
         for (Advertisement advertisement : optimalVideoSet) {
             System.out.println(advertisement.getName() + " is displaying... " + advertisement.getAmountPerOneDisplaying() +
                     ", " + (1000 * advertisement.getAmountPerOneDisplaying() / advertisement.getDuration()));
             advertisement.revalidate();
         }
+    }
+
+    public long getAmount(List<Advertisement> ads){ //сумма денег в копейках за набор рекламы
+        long amount = 0;
+        for (Advertisement ad : ads)
+            amount += ad.getAmountPerOneDisplaying();
+        return amount;
+    }
+
+    public int getDuration(List<Advertisement> ads){ //общая продолжительность показа отобранный рекламных роликов
+        int duration = 0;
+        for (Advertisement ad : ads)
+            duration += ad.getDuration();
+        return duration;
     }
 }

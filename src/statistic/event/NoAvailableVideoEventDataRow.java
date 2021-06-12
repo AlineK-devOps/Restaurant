@@ -9,4 +9,9 @@ public class NoAvailableVideoEventDataRow implements EventDataRow {//нет ни
     public NoAvailableVideoEventDataRow(int totalDuration){
         this.totalDuration = totalDuration;
     }
+
+    @Override
+    public EventType getType() { //вернуть тип события
+        return EventType.NO_AVAILABLE_VIDEO;
+    }
 }

@@ -18,4 +18,9 @@ public class CookedOrderEventDataRow implements EventDataRow{ //повар пр�
         this.cookingTimeSeconds = cookingTimeSeconds;
         this.cookingDishes = cookingDishes;
     }
+
+    @Override
+    public EventType getType() { //вернуть тип события
+        return EventType.COOKED_ORDER;
+    }
 }

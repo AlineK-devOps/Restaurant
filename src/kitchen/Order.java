@@ -15,6 +15,10 @@ public class Order { //заказ
         dishes = ConsoleHelper.getAllDishesForOrder(); //инициализация списка выбранных блюд
     }
 
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
     public int getTotalCookingTime(){ //вычисление времени приготовления заказа
         int time = 0;
 
