@@ -26,7 +26,7 @@ public class CookedOrderEventDataRow implements EventDataRow{ //повар пр�
 
     @Override
     public Date getDate() {
-        return null;
+        return currentDate;
     }
 
     public String getCookName(){
@@ -35,6 +35,6 @@ public class CookedOrderEventDataRow implements EventDataRow{ //повар пр�
 
     @Override
     public int getTime() {
-        return 0;
+        return cookingTimeSeconds;
     }
 }

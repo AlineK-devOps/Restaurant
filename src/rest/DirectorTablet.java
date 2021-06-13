@@ -20,7 +20,16 @@ public class DirectorTablet { //планшет директора для про�
     }
 
     public void printCookWorkloading(){ //загрузка повара, группировка по дням
+        TreeMap<Date, TreeMap<String, Integer>> durationOfWork = StatisticManager.getInstance().getDurationOfWork();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("d-MMM-y", Locale.ENGLISH);
 
+        for (Map.Entry<Date, TreeMap<String, Integer>> entry : durationOfWork.entrySet()){
+            ConsoleHelper.writeMessage(String.format(Locale.ENGLISH, "%s", dateFormat.format(entry.getKey()))); //вывод даты
+
+            for (Map.Entry<String, Integer> cook : entry.getValue().entrySet()){ //вывод поваров
+                ConsoleHelper.writeMessage(String.format("%s - %d min", cook.getKey(), (int)Math.ceil(1.0 * cook.getValue() / 60)));
+            }
+        }
     }
 
     public void printActiveVideoSet(){ //список активных роликов и оставшееся количество показов по каждому

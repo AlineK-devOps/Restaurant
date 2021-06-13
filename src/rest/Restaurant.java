@@ -3,10 +3,6 @@ package rest;
 import kitchen.Cook;
 import kitchen.Waiter;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 public class Restaurant { //ресторан
     public static void main(String[] args){
         Tablet tablet5 = new Tablet(5);
