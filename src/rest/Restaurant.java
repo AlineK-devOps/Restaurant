@@ -17,10 +17,10 @@ public class Restaurant { //ресторан
         tablet5.createOrder();
 
         DirectorTablet directorTablet = new DirectorTablet();
-        directorTablet.printActiveVideoSet();
         directorTablet.printAdvertisementProfit();
-        directorTablet.printArchivedVideoSet();
         directorTablet.printCookWorkloading();
+        directorTablet.printActiveVideoSet();
+        directorTablet.printArchivedVideoSet();
     }
 
 }

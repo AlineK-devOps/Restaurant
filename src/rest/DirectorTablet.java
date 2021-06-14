@@ -1,5 +1,6 @@
 package rest;
 
+import ad.StatisticAdvertisementManager;
 import statistic.StatisticManager;
 
 import java.text.SimpleDateFormat;
@@ -33,10 +34,17 @@ public class DirectorTablet { //планшет директора для про�
     }
 
     public void printActiveVideoSet(){ //список активных роликов и оставшееся количество показов по каждому
+        TreeMap<String, Integer> activeVideos = StatisticAdvertisementManager.getInstance().getActiveVideos();
 
+        for (Map.Entry<String, Integer> entry : activeVideos.entrySet()){
+            ConsoleHelper.writeMessage(String.format("%s - %d", entry.getKey(), entry.getValue()));
+        }
     }
 
     public void printArchivedVideoSet(){ //список неактивных роликов
+        TreeSet<String> nonActiveVideos = StatisticAdvertisementManager.getInstance().getNonActiveVideos();
 
+        for (String name : nonActiveVideos)
+            ConsoleHelper.writeMessage(name);
     }
 }
