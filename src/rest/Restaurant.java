@@ -2,26 +2,45 @@ package rest;
 
 import kitchen.Cook;
 import kitchen.Waiter;
+import statistic.StatisticManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Restaurant { //ресторан
     private static final int ORDER_CREATING_INTERVAL = 100;
 
     public static void main(String[] args){
-        Tablet tablet5 = new Tablet(5);
-        Cook cook = new Cook("Amigo");
-        Waiter waiter = new Waiter();
+        Cook cook1 = new Cook("Amigo");
+        Cook cook2 = new Cook("Norman");
 
-        tablet5.addObserver(cook);
-        cook.addObserver(waiter);
+        StatisticManager.getInstance().register(cook1);
+        StatisticManager.getInstance().register(cook2);
 
-        tablet5.createOrder();
-        tablet5.createOrder();
-        tablet5.createOrder();
+        List<Tablet> tablets = new ArrayList<>();
 
-        DirectorTablet directorTablet = new DirectorTablet();
+        for (int i = 0; i < 5; i++){
+            tablets.add(new Tablet(i + 1));
+            tablets.get(i).addObserver(cook1);
+            tablets.get(i).addObserver(cook2);
+        }
+
+        try {
+            Thread tread = new Thread(new RandomOrderGeneratorTask(tablets, ORDER_CREATING_INTERVAL));
+            tread.start();
+            Thread.sleep(1000);
+            tread.interrupt();
+        } catch (InterruptedException e) {
+        }
+
+        /*Waiter waiter = new Waiter();
+        cook1.addObserver(waiter);
+        cook2.addObserver(waiter);*/
+
+        /*DirectorTablet directorTablet = new DirectorTablet();
         directorTablet.printAdvertisementProfit();
         directorTablet.printCookWorkloading();
         directorTablet.printActiveVideoSet();
-        directorTablet.printArchivedVideoSet();
+        directorTablet.printArchivedVideoSet();*/
     }
 }
