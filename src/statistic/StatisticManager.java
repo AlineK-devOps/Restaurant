@@ -1,6 +1,5 @@
 package statistic;
 
-import kitchen.Cook;
 import statistic.event.CookedOrderEventDataRow;
 import statistic.event.EventDataRow;
 import statistic.event.EventType;
@@ -30,7 +29,6 @@ public class StatisticManager { //регистрация событий в хр�
 
     private StatisticManager.StatisticStorage statisticStorage = new StatisticStorage();
     private static StatisticManager manager; //Singleton
-    private Set<Cook> cooks = new HashSet<>(); //список поваров
 
     private StatisticManager() {
     }
@@ -41,17 +39,9 @@ public class StatisticManager { //регистрация событий в хр�
         return manager;
     }
 
-    public Set<Cook> getCooks(){
-        return cooks;
-    }
-
     public void register(EventDataRow data){ //регистрирует событие в хранилище
         statisticStorage.put(data);
     } //регистрация записи в хранилище
-
-    public void register(Cook cook){ //регистрация повара
-        cooks.add(cook);
-    }
 
     public TreeMap<Date, Float> profitForDay(){ //считает общую прибыль от рекламы за каждый день
         if (!statisticStorage.getStorage().containsKey(EventType.SELECTED_VIDEOS)) //если реклама не показывалась
