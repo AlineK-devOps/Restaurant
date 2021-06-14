@@ -41,6 +41,10 @@ public class StatisticManager { //регистрация событий в хр�
         return manager;
     }
 
+    public Set<Cook> getCooks(){
+        return cooks;
+    }
+
     public void register(EventDataRow data){ //регистрирует событие в хранилище
         statisticStorage.put(data);
     } //регистрация записи в хранилище
