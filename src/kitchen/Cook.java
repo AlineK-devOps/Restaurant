@@ -7,19 +7,18 @@ import statistic.event.CookedOrderEventDataRow;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Cook extends Observable implements Observer{ //повар
+public class Cook extends Observable{ //повар
     private String name;
 
     public Cook(String name) {
         this.name = name;
     }
 
-    @Override
-    public void update(Observable observable, Object arg) { //заказ поступил
-        ConsoleHelper.writeMessage("Start cooking - " + arg);
-        StatisticManager.getInstance().register(new CookedOrderEventDataRow(observable.toString(), name, ((Order)arg).getTotalCookingTime() * 60, ((Order)arg).getDishes())); //регистрируем событие
+    public void startCookingOrder(Order order){
+        ConsoleHelper.writeMessage("Start cooking - " + order);
+        StatisticManager.getInstance().register(new CookedOrderEventDataRow(order.getTablet().toString(), name, order.getTotalCookingTime() * 60, order.getDishes())); //регистрируем событие
         setChanged();
-        notifyObservers(arg); //сообщаем официантам, что заказ готов
+        notifyObservers(order); //сообщаем официантам, что заказ готов
     }
 
     @Override

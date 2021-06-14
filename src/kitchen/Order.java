@@ -20,6 +20,10 @@ public class Order { //заказ
         return dishes;
     }
 
+    public Tablet getTablet(){
+        return tablet;
+    }
+
     public int getTotalCookingTime(){ //вычисление времени приготовления заказа
         int time = 0;
 

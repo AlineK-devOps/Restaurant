@@ -1,7 +1,6 @@
 package rest;
 
 import kitchen.Cook;
-import kitchen.Waiter;
 import statistic.StatisticManager;
 
 import java.util.ArrayList;
@@ -18,11 +17,11 @@ public class Restaurant { //ресторан
         StatisticManager.getInstance().register(cook2);
 
         List<Tablet> tablets = new ArrayList<>();
+        OrderManager manager = new OrderManager();
 
         for (int i = 0; i < 5; i++){
             tablets.add(new Tablet(i + 1));
-            tablets.get(i).addObserver(cook1);
-            tablets.get(i).addObserver(cook2);
+            tablets.get(i).addObserver(manager);
         }
 
         try {
