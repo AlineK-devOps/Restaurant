@@ -4,6 +4,8 @@ import kitchen.Cook;
 import kitchen.Waiter;
 
 public class Restaurant { //ресторан
+    private static final int ORDER_CREATING_INTERVAL = 100;
+
     public static void main(String[] args){
         Tablet tablet5 = new Tablet(5);
         Cook cook = new Cook("Amigo");
@@ -22,5 +24,4 @@ public class Restaurant { //ресторан
         directorTablet.printActiveVideoSet();
         directorTablet.printArchivedVideoSet();
     }
-
 }

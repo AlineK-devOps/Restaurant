@@ -10,9 +10,10 @@ public class Order { //заказ
     private final Tablet tablet; //планшет
     protected List<Dish> dishes; //список блюд в заказе
 
-    public Order(Tablet tablet) throws IOException {
+    public Order(Tablet tablet) throws IOException{
         this.tablet = tablet;
-        dishes = ConsoleHelper.getAllDishesForOrder(); //инициализация списка выбранных блюд
+        initDishes(); //инициализация списка выбранных блюд
+        ConsoleHelper.writeMessage(toString());
     }
 
     public List<Dish> getDishes() {
@@ -41,5 +42,9 @@ public class Order { //заказ
             order.append(dish).append(",").append(" ");
 
         return String.format("Your order: [%s] of %s, cooking time %dmin", order.substring(0, order.length() - 2), tablet, getTotalCookingTime());
+    }
+
+    protected void initDishes() throws IOException { //инициализация списка выбранных блюд
+        dishes = ConsoleHelper.getAllDishesForOrder(); //инициализация списка выбранных блюд
     }
 }
