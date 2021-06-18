@@ -17,7 +17,7 @@ public class Cook extends Observable implements Observer{ //повар
     @Override
     public void update(Observable observable, Object arg) { //заказ поступил
         ConsoleHelper.writeMessage("Start cooking - " + arg);
-        StatisticManager.getInstance().register(new CookedOrderEventDataRow(observable.toString(), name, ((Order)arg).getTotalCookingTime(), ((Order)arg).getDishes())); //регистрируем событие
+        StatisticManager.getInstance().register(new CookedOrderEventDataRow(observable.toString(), name, ((Order)arg).getTotalCookingTime() * 60, ((Order)arg).getDishes())); //регистрируем событие
         setChanged();
         notifyObservers(arg); //сообщаем официантам, что заказ готов
     }

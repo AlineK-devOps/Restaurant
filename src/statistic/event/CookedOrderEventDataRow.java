@@ -29,6 +29,10 @@ public class CookedOrderEventDataRow implements EventDataRow{ //повар пр�
         return null;
     }
 
+    public String getCookName(){
+        return cookName;
+    }
+
     @Override
     public int getTime() {
         return 0;
